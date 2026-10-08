@@ -1,0 +1,224 @@
+*{
+        transition: all 0.3s ease-in-out;
+}
+.todo-list{
+    width: 95%;
+    max-width: 600px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+
+}
+.todo-list .header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(136, 136, 136, 0.205);
+    padding: 10px;
+    border-radius: 30px;
+}
+.todo-list .header h1{
+    color: #00aeff;
+    font-size: 25px;
+}
+.todo-list .header button{
+    background-color: #00aeff;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    padding: 0 25px;
+    cursor: pointer;
+}
+
+.todo-list .tasks{
+    width: 100%;
+    padding: 10px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 500px;
+}
+
+
+.tasks::-webkit-scrollbar {
+  width: 8px;
+}
+
+.tasks::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.tasks::-webkit-scrollbar-thumb {
+  background: #00aeff;
+  border-radius: 10px;
+}
+
+
+
+.task {
+  min-height: max-content;
+  width: 100%;
+  background-color: rgba(160, 160, 160, 0.171);
+  border: 2px solid #e8e8e8;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.task::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background:#00aeff;
+  transition: width 0.3s ease;
+}
+.header:hover,
+.task:hover {
+  transform: scale(1.01);
+  border-color: #00aeff;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+}
+
+.task:hover::before {
+  width: 8px;
+}
+
+
+
+/* =========================== */
+.task.completed{
+    background-color: rgba(193, 255, 100, 0.596);
+}
+
+.task.completed .task-title,
+.task.completed .task-content{
+    text-decoration: line-through;
+}
+
+.task.not-completed{
+    background-color: rgba(255, 0, 0, 0.171);
+}
+/* ========================== */
+
+
+
+.task-info {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.task-title {
+  color: #2d3748;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.task-content {
+  color: #718096;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.task-dates {
+  display: flex;
+  gap: 15px;
+  font-size: 0.85rem;
+}
+
+.start-date,
+.end-date {
+  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: #667eea;
+  font-weight: 500;
+}
+
+.end-date {
+  background: linear-gradient(135deg, #f093fb15 0%, #f5576c15 100%);
+  color: #f5576c;
+}
+
+.task-tools {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+}
+
+.task-tools button {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 80px;
+}
+
+.task-tools button:nth-child(1) {
+  background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+  color: white;
+}
+
+.task-tools button:nth-child(2) {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+}
+
+.task-tools button:nth-child(3) {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  color: white;
+}
+.todo-list .header button:hover,
+.task-tools button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.task-tools button:active {
+  transform: scale(0.95);
+}
+
+.footer {
+  background: linear-gradient(135deg, #00eeff 0%, #577cf5 100%);
+  padding: 10px;
+  text-align: center;
+  border-radius: 30px;
+}
+
+.mintivation-msg {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  letter-spacing: 1px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}

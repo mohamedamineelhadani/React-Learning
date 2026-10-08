@@ -1,0 +1,90 @@
+body{
+    background: #000000be;
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn{
+    padding: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    background: hsla(0, 0%, 100%, 0.137);
+    color: rgb(255, 255, 255);
+    border: solid white 2px;
+    border-radius: 10px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.quiz{
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(#0130cc,#711ee4,#760cce,#f59f00);
+    padding: 10px 25px;
+    border-radius: 15px;
+    width: 95%;
+    max-width: 550px;
+    margin: auto;
+    border: solid white 2px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+
+}
+.quiz .title{
+    border-bottom: solid 3px rgb(255, 255, 255);
+    padding: 0 10px 10px;
+    width: 100%;
+}
+.quiz .title h1{
+    font-size: 35px;
+    color: white;
+}
+.quiz .quetion{
+    margin: 10px 0;
+    width: 100%
+}
+.quiz .quetion p,
+.quiz .next .next-steps{
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+.quiz .buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%
+}
+.quiz .buttons .answer-btn{
+    width: 100%;
+    margin: 3px 0;
+}
+.quiz .next{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%
+}
+.true{
+    background: rgb(7, 207, 0);
+}
+.false{
+    background: rgb(226, 0, 0);
+}
+
+
+.result{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.result .score{
+    font-size: 25px;
+    margin-bottom: 20px;
+    color: white;
+}

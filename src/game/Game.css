@@ -1,0 +1,61 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.game{
+    background:linear-gradient(to right,pink,rgb(0, 217, 255)) ;
+    padding: 3px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 430px;
+    width: 90%;
+    box-shadow: 0 0 5px white;
+    border:solid 2px rgba(255, 255, 255, 0.425);
+}
+.game .images{
+    width: 100%;
+    height: 150px;
+    background-color: rgba(73, 70, 70, 0.342);
+    border-radius: 10px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    padding: 10px;
+}
+.game .images img{
+    height: 100%;
+    border-radius: 10px;
+}
+
+.game button{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px 20px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.players{
+    padding:0 100px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.players .vsMessage{
+    font-size: 25px;
+    text-align: center;
+    color: white;
+    margin: 0 15px;
+}
+
