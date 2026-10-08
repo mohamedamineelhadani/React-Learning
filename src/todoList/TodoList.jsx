@@ -4,89 +4,94 @@ import AddTask from "./AddTask";
 import EditTask from "./EditTask";
 
 const TodoList = () => {
-///////////////////////////////////
-  const [todoListData,setTodoListData]=useState([]);
-  const [addTask,setAddTask]= useState(false);
-  const [editTask,setEditTask]= useState(false);
-  const [editTaskData,setEditTaskData] = useState({});
+  const [todoListData, setTodoListData] = useState([]);
+  const [addTask, setAddTask] = useState(false);
+  const [editTask, setEditTask] = useState(false);
+  const [editTaskData, setEditTaskData] = useState({});
 
-/////////////////////////////////
-  useEffect(()=>{
-    if(localStorage.getItem("TodoListData") === null){
-      localStorage.setItem("TodoListData",JSON.stringify([]))
-    }else{
-      setTodoListData(JSON.parse(localStorage.getItem("TodoListData")))
+  useEffect(() => {
+    if (localStorage.getItem("TodoListData") === null) {
+      localStorage.setItem("TodoListData", JSON.stringify([]));
+    } else {
+      setTodoListData(JSON.parse(localStorage.getItem("TodoListData")));
     }
-  },[])
-////////////////////////////////////
+  }, []);
 
-  function showAddTask(newData = todoListData){
-    setAddTask(addTask ? false : true);
+  const showAddTask = (newData = todoListData) => {
+    setAddTask((v) => !v);
     setTodoListData(newData);
-  }
-  function showEditTask(newData = todoListData){
-    setEditTask(editTask ? false : true);
-    setTodoListData(newData);
-  }
+  };
 
-///////////////////////////// 
-  function add(){
-    showAddTask()
-  }
-  function edit(task){
+  const showEditTask = (newData = todoListData) => {
+    setEditTask((v) => !v);
+    setTodoListData(newData);
+  };
+
+  const edit = (task) => {
     setEditTaskData(task);
     showEditTask();
-  }
-////////////////////////////////
-  function done(id){
-    todoListData.forEach(task =>{
-        if(task.id === id){
-            task.completed =true;
-        }
-    })
-    const newTodoListData =[...todoListData];
-    setTodoListData(newTodoListData);
-    localStorage.setItem("TodoListData",JSON.stringify(newTodoListData));
-  }
+  };
 
-  function deleteTask(id){
-    const newTodoListData =todoListData.filter(task => task.id != id);
+  const done = (id) => {
+    todoListData.forEach((task) => {
+      if (task.id === id) task.completed = true;
+    });
+    const newTodoListData = [...todoListData];
     setTodoListData(newTodoListData);
-    localStorage.setItem("TodoListData",JSON.stringify(newTodoListData));
-  }
-/////////////////////////////////////////////
+    localStorage.setItem("TodoListData", JSON.stringify(newTodoListData));
+  };
+
+  const deleteTask = (id) => {
+    const newTodoListData = todoListData.filter((task) => task.id !== id);
+    setTodoListData(newTodoListData);
+    localStorage.setItem("TodoListData", JSON.stringify(newTodoListData));
+  };
 
   return (
     <div className="todo-list">
-        {addTask ? <AddTask showAddTask={showAddTask}  /> : <></>}
-        {editTask ? <EditTask showEditTask={showEditTask} editTaskData={editTaskData} /> : <></>}
-      <div className="header">
+      {addTask && <AddTask showAddTask={showAddTask} />}
+      {editTask && (
+        <EditTask showEditTask={showEditTask} editTaskData={editTaskData} />
+      )}
+
+      <div className="todo-list__header">
         <h1>Todo List</h1>
-        <button onClick={()=>add()}>Add</button>
+        <button className="todo-list__add" onClick={() => showAddTask()}>
+          Add
+        </button>
       </div>
 
-      <div className="tasks">
+      <div className="todo-list__tasks">
         {todoListData.map((task) => (
-          <div className={`task ${task.completed ? "completed" : "not-completed"}`} key={task.id} title={`task ${task.id}`}>
-            <div className="task-info">
-              <h2 className="task-title">{task.title}</h2>
-              <p className="task-content">{task.content}</p>
-              <div className="task-dates">
-                <span className="start-date">{task.start_date}</span>
-                <span className="end-date">{task.end_date}</span>
+          <div
+            key={task.id}
+            title={`task ${task.id}`}
+            className={`task ${task.completed ? "task--done" : "task--todo"}`}
+          >
+            <div className="task__info">
+              <h2 className="task__title">{task.title}</h2>
+              <p className="task__content">{task.content}</p>
+              <div className="task__dates">
+                <span className="task__date task__date--start">
+                  {task.start_date}
+                </span>
+                <span className="task__date task__date--end">
+                  {task.end_date}
+                </span>
               </div>
             </div>
-            <div className="task-tools">
-              <button onClick={()=>done(task.id)}>Done</button>
-              <button onClick={()=>edit(task)}>Edit</button>
-              <button onClick={()=>deleteTask(task.id)}>Delete</button>
+
+            <div className="task__tools">
+              <button onClick={() => done(task.id)}>Done</button>
+              <button onClick={() => edit(task)}>Edit</button>
+              <button onClick={() => deleteTask(task.id)}>Delete</button>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="footer">
-        <p className="mintivation-msg">Don't give up !!</p>
+      <div className="todo-list__footer">
+        <p>Don't give up !!</p>
       </div>
     </div>
   );

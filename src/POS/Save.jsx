@@ -1,43 +1,52 @@
-import React from 'react';
-import './save.css';
+import React from "react";
+import "./save.css";
 
-const Save = ({ data,display,view }) => {
+const Save = ({ data, display, view, onClose }) => {
   return (
-    <div className={`save-container ${display ? "active" :""}`}>
-      <div className="save-header">
+    <div className={`save ${display ? "save--open" : ""}`}>
+      <div className="save__header">
         <h2>Order History</h2>
-        <span className="order-count">{data.length} Orders Saved</span>
+        <div className="save__header-right">
+          <span className="save__count">{data.length} saved</span>
+          <button className="save__close" onClick={onClose}>
+            ×
+          </button>
+        </div>
       </div>
 
-      <div className="orders-grid">
-        {data.map((order, index) => (
-          <div className="order-card" key={index}>
-            <div className="order-card-header">
-              <span className="order-id">ID: #{order.id}</span>
-              <span className="order-date">{order.date}</span>
-            </div>
-            
-            <div className="order-body">
-              <div className="info-row">
-                <span>Items:</span>
-                <span className="val">{order.items.length} Items</span>
-              </div>
-              <div className="info-row">
-                <span>Gross:</span>
-                <span className="val">${order.payment.gross}</span>
-              </div>
-              <div className="info-row">
-                <span>Tax:</span>
-                <span className="val">${order.payment.tax}</span>
-              </div>
+      <div className="save__grid">
+        {data.length === 0 && (
+          <p className="save__empty">No orders saved yet.</p>
+        )}
+
+        {data.map((order, i) => (
+          <div className="save-card" key={i}>
+            <div className="save-card__header">
+              <span className="save-card__id">Order #{order.id}</span>
+              <span className="save-card__date">{order.date}</span>
             </div>
 
-            <div className="order-footer">
-              <span className="total-label">Total Amount</span>
-              <span className="total-val">${order.payment.total}</span>
+            <div className="save-card__row">
+              <span>Items</span>
+              <span className="save-card__val">{order.items.length}</span>
             </div>
-            
-            <button className="view-btn" onClick={()=>view(order)}>View Details</button>
+            <div className="save-card__row">
+              <span>Gross</span>
+              <span className="save-card__val">${order.payment.gross}</span>
+            </div>
+            <div className="save-card__row">
+              <span>Tax</span>
+              <span className="save-card__val">${order.payment.tax}</span>
+            </div>
+
+            <div className="save-card__total">
+              <span>Total</span>
+              <span>${order.payment.total}</span>
+            </div>
+
+            <button className="save-card__btn" onClick={() => view(order)}>
+              View Details
+            </button>
           </div>
         ))}
       </div>

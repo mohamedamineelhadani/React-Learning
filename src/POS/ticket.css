@@ -1,70 +1,182 @@
-.ticket-container {
-    width: 320px;
-    background: #fff;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    font-family: 'Courier New', Courier, monospace; /* خط يشبه الطابعات */
+/* =========================
+   TICKET
+   ========================= */
+.ticket {
+  width: 320px;
+  margin: 0 auto;
+  padding: 22px;
+
+  background: #fff;
+  border: 1px solid rgba(226, 115, 19, 0.2);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+
+  font-family: "Courier New", Courier, monospace;
+  color: var(--ink-900);
+
+  animation: cardIn 0.5s ease both;
 }
 
-.title {
-    text-align: center;
-    margin-bottom: 20px;
+/* =========================
+   HEAD
+   ========================= */
+.ticket__head {
+  text-align: center;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 2px dashed rgba(226, 115, 19, 0.35);
 }
 
-.title h2 { margin: 0; letter-spacing: 2px; }
-.title p { color: #888; font-size: 12px; }
-
-.ticket-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    font-size: 14px;
+.ticket__head h2 {
+  margin: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--ink-900);
 }
 
-.item-info { display: flex; gap: 10px; }
-.qty { font-weight: bold; color: #555; }
-.name { max-width: 180px; }
-
-.divider {
-    border-top: 2px dashed #eee;
-    margin: 15px 0;
+.ticket__head span {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.72rem;
+  color: var(--ink-500);
 }
 
-.summary-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-    font-size: 14px;
+.ticket__head p {
+  margin: 4px 0 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--orange-700);
 }
 
-.total {
-    margin-top: 10px;
-    font-weight: bold;
-    font-size: 18px;
-    color: #000;
+/* =========================
+   ITEMS
+   ========================= */
+.ticket__items {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.btns {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
+.ticket__item {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.82rem;
 }
 
-.btns button {
-    flex: 1;
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
+.ticket__item-info {
+  display: flex;
+  gap: 8px;
+  min-width: 0;
 }
 
-.cancellation { background: #fdeaea; color: #e74c3c; }
-.print-save { background: #27ae60; color: #fff; }
+.ticket__qty {
+  font-weight: 700;
+  color: var(--orange-700);
+}
 
-/* إعدادات الطباعة */
+.ticket__name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ticket__price {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* =========================
+   DIVIDER
+   ========================= */
+.ticket__divider {
+  margin: 14px 0;
+  border-top: 2px dashed rgba(226, 115, 19, 0.35);
+}
+
+/* =========================
+   SUMMARY
+   ========================= */
+.ticket__summary {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ticket__row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: var(--ink-700);
+}
+
+.ticket__row--total {
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(226, 115, 19, 0.35);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--orange-700);
+}
+
+/* =========================
+   ACTIONS
+   ========================= */
+.ticket__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.ticket__btn {
+  flex: 1;
+  padding: 10px 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.ticket__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.ticket__btn--cancel {
+  color: #a01a1a;
+  background: #fdeaea;
+}
+
+.ticket__btn--print {
+  color: #fff;
+  background: linear-gradient(135deg, var(--orange-500), var(--orange-700));
+}
+
+/* =========================
+   PRINT
+   ========================= */
 @media print {
-    .btns { display: none; } /* إخفاء الأزرار عند الطباعة */
-    .ticket-container { box-shadow: none; width: 100%; }
+  .ticket__actions { display: none; }
+  .ticket {
+    box-shadow: none;
+    border: none;
+    width: 100%;
+  }
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 400px) {
+  .ticket { width: 100%; padding: 16px; }
+  .ticket__head h2 { font-size: 1.1rem; }
 }

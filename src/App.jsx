@@ -1,13 +1,10 @@
 import { Routes, Route, Link } from "react-router-dom";
-import Game from "./game/Game";
-import Quiz from "./quiz/Quiz";
-import Quiz2 from "./quiz/Quiz2";
-import TodoList from "./todoList/TodoList";
-import TicTacToe from "./tictactoe/TicTacToe";
-import Efm from "./Efm/Efm";
-import Products from "./efmProduct/Products";
-import UseParam from "./learning/UseParam";
-import UseNavigate from "./learning/UseNavigate";
+import Game from "./Game/Game";
+import Quiz from "./Quiz/Quiz";
+import Quiz2 from "./Quiz/Quiz2";
+import TodoList from "./TodoList/TodoList";
+import TicTacToe from "./TicTacToe/TicTacToe";
+import POS from "./POS/POS";
 
 function App() {
   return (
@@ -18,9 +15,7 @@ function App() {
         <Link to="/Quiz2">Quiz2</Link>
         <Link to="/todoList">Todo List</Link>
         <Link to="/ticTacToa">Tic Tac Toe</Link>
-        <Link to="/useParams/mohamed amine/20">useParams</Link>
-        <Link to="/efm">EFM</Link>
-        <Link to="/products">Products</Link>
+        <Link to="/pos">POS</Link>
       </nav>
       <div className="app-content">
         <Routes>
@@ -29,10 +24,7 @@ function App() {
           <Route path="/Quiz2" element={<Quiz2 />} />
           <Route path="/todoList" element={<TodoList />} />
           <Route path="/ticTacToa" element={<TicTacToe />} />
-          <Route path="/useParams/:name/:age" element={<UseParam />} />
-          <Route path="/useNavigate/:name/:age" element={<UseNavigate />} />
-          <Route path="/efm" element={<Efm />} />
-          <Route path="/products" element={<Products />} />
+          <Route path="/pos" element={<POS />} />
         </Routes>
       </div>
     </>

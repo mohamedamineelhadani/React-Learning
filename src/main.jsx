@@ -8,7 +8,7 @@ import "./index.css";
 
 
 // import AfichageStagiaires from "./EfmFas/AfichageStagiaires";
-import POS from "./POS/POS";
+
 import Hocks from "./Hocks/Hocks";
 import Efm from "./EFM2023/efm";
 import Test from "./Test.jsx";
@@ -30,26 +30,25 @@ import App from "./App.jsx";
 // import ReduxTollkit from './reduxTollkit/ReduxToolkit';
 
 
-// import Posts from "./Posts/Posts.jsx";
-// import PostsStore from "./Posts/PostsStore.jsx";
+import Posts from "./Posts/Posts.jsx";
+import PostsStore from "./Posts/PostsStore.jsx";
 
 
 
-createRoot(document.body).render(
+createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <StrictMode>
       {/* <Provider store={Store}> */}
       {/* <AfichageStagiaires /> */}
-      {/* <POS /> */}
       {/* <Test /> */}
 
       {/* <ReduxTollkit /> */}
 
         {/* <Products /> */}
-        <App /> 
+        {/* <App />  */}
         {/* <Counter /> */}
         {/* <Countries /> */}
-        {/* <Posts /> */}
+        <Posts />
         {/* <Hocks /> */}
       {/* </Provider> */}
       {/* <Efm /> */}
