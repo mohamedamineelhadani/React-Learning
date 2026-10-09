@@ -1,7 +1,0 @@
-1 - npx create-react-app gestion_stagaire
-    cd gestion_stagaire
-    npm start 
-
-1 - npm create vite@latest gestion_stagaire
-    cd gestion_stagaire
-    npm run dev
